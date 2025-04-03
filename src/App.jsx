@@ -4,6 +4,7 @@ import NavbarComponent from './components/NavbarComponent';
 import PageHomeComponent from './components/PageHomeComponent';
 import PageVeterinarioComponet from './components/PageVeterinarioComponent';
 import PageFarmaciaComponet from './components/PageFarmaciaComponent';
+import PageLoginComponent from './components/PageLoginComponent';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path='/' element={<PageHomeComponent />} />
             <Route path='/veterinario' element={<PageVeterinarioComponet />} />
             <Route path='/farmacia' element={<PageFarmaciaComponet />} />
+            <Route path='/login' element={<PageLoginComponent />} />
           </Routes>
         </div>
       </BrowserRouter>

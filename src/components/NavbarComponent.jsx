@@ -1,7 +1,21 @@
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const NavbarComponent = () => {
+  const profile = useSelector((state) => {
+    return state.profile;
+  });
+
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch({
+      type: 'LOGOUT',
+    });
+    localStorage.removeItem('veterinari_token');
+  };
+
   return (
     <Navbar collapseOnSelect expand='lg' className='bg-body-tertiary'>
       <Container>
@@ -19,12 +33,28 @@ const NavbarComponent = () => {
             </Link>
           </Nav>
           <Nav>
-            <Link to='registrazione' className='nav-link'>
-              Registrati
-            </Link>
-            <Link to='accedi' className='nav-link'>
-              Accedi
-            </Link>
+            {profile.fullName ? (
+              <div className='d-flex align-items-center'>
+                <span>{profile.fullName}</span>
+                <Button
+                  className='nav-link'
+                  onClick={() => {
+                    logout();
+                  }}
+                >
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link to='registrazione' className='nav-link'>
+                  Registrati
+                </Link>
+                <Link to='login' className='nav-link'>
+                  Accedi
+                </Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -1,6 +1,28 @@
+import { useState } from "react";
 import { Button, Container } from "react-bootstrap";
 
 const PageHomeComponent = () => {
+  const [MicrochipId, setMicrochipId] = useState("");
+  const [animale, setAnimale] = useState([]);
+  const [error, setError] = useState(null);
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `https://localhost:7019/api/GestioneRicoveri/RicercaRicoverato?NumeroMicroChip=${MicrochipId}`
+      );
+      if (!response.ok) {
+        throw new Error("Qualcosa è andato Giovanni Storti");
+      }
+      const Data = await response.json();
+      setAnimale(data);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
     <>
       <Container>
@@ -26,7 +48,7 @@ const PageHomeComponent = () => {
           </Button>
         </div>
 
-        <form>
+        <form onSubmit={handleSearch}>
           <div className="form-group">
             <label>
               Inserisci il Microchip ID per poter accedere ai dati del tuo amico
@@ -36,12 +58,30 @@ const PageHomeComponent = () => {
             <input
               placeholder="Inserisci Codice riportato sulla targhetta"
               type="search"
+              value={MicrochipId}
+              onChange={(e) => setMicrochipId(e.target.value)}
               style={{ width: "20em" }}
             />
 
             <button type="submit" class="btn btn-primary">
               Submit
             </button>
+          </div>
+          <div>
+            {animale.map((animale) => (
+              <div key={animale.IdAnimale}>
+                <p>Nome:{animale.Nome}</p>
+                <p>Data della Registrazione:{animale.DataRegistrazione}</p>
+                <p>Colore:{animale.Colore}</p>
+                <p>Nascita:{animale.DataDiNascita}</p>
+                <p>
+                  Proprietario:{animale.ProprietarioAnimale.Nome},
+                  {animale.ProprietarioAnimale.Cognome}
+                </p>
+                <p>CodiceFiscale:{animale.ProprietarioAnimale.CodiceFiscale}</p>
+                <p>Email:{animale.ProprietarioAnimale.Email}</p>
+              </div>
+            ))}
           </div>
         </form>
         <hr />

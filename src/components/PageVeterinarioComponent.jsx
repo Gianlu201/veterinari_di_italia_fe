@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 
+
 const PageVeterinarioComponet = () => {
   const getAllAnimals = async () => {
     try {
@@ -30,6 +31,7 @@ const PageVeterinarioComponet = () => {
   return (
     <Container>
       <h1>Pagina veterinario</h1>
+      <PageVeterinarioComponet />
     </Container>
   );
 };

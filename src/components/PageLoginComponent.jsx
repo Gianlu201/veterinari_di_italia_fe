@@ -126,7 +126,7 @@ const PageLoginComponent = () => {
         )}
 
         <div className='d-flex justify-content-end gap-2 mt-3'>
-          <Link to='/registrazione' className='btn btn-sm btn-warning'>
+          <Link to='/signIn' className='btn btn-sm btn-warning'>
             Registrati
           </Link>
           <Button type='submit' className='btn btn-sm btn-success'>

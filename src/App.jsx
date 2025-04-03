@@ -5,6 +5,7 @@ import PageHomeComponent from './components/PageHomeComponent';
 import PageVeterinarioComponet from './components/PageVeterinarioComponent';
 import PageFarmaciaComponet from './components/PageFarmaciaComponent';
 import PageLoginComponent from './components/PageLoginComponent';
+import PageSignInComponent from './components/PageSignInComponent';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/veterinario' element={<PageVeterinarioComponet />} />
             <Route path='/farmacia' element={<PageFarmaciaComponet />} />
             <Route path='/login' element={<PageLoginComponent />} />
+            <Route path='/signIn' element={<PageSignInComponent />} />
           </Routes>
         </div>
       </BrowserRouter>

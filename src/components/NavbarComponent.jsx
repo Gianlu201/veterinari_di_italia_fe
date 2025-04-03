@@ -19,8 +19,12 @@ const NavbarComponent = () => {
             </Link>
           </Nav>
           <Nav>
-            <Nav.Link href='#deets'>Registrati</Nav.Link>
-            <Nav.Link href='#memes'>Accedi</Nav.Link>
+            <Link to='registrazione' className='nav-link'>
+              Registrati
+            </Link>
+            <Link to='accedi' className='nav-link'>
+              Accedi
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

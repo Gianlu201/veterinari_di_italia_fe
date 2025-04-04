@@ -24,6 +24,7 @@ const FormVisitaComponent = () => {
         },
         body: JSON.stringify(Visita),
       });
+      console.log(response);
     } catch {
       throw new Error();
     }

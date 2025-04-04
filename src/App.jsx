@@ -7,8 +7,7 @@ import PageFarmaciaComponet from './components/PageFarmaciaComponent';
 import PageLoginComponent from './components/PageLoginComponent';
 import PageSignInComponent from './components/PageSignInComponent';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

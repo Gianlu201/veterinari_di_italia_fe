@@ -1,0 +1,12 @@
+body {
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+.backgroundRed {
+    background-color: #F04D31;
+}
+
+.webImg {
+    background-image: url(/public/img/backGround_dog.jpg);
+    background-size: cover;
+}

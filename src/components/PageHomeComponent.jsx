@@ -90,13 +90,16 @@ const PageHomeComponent = () => {
             </div>
           </div>
 
+
           {error ? (
             <div className="d-inline-block border border-1 rounded-3 m-2 p-3 pe-5">
               <p className="m-0 p-0">{error}</p>
             </div>
           ) : (
             animale.nome && (
+
               <div className="d-inline-block border border-1 rounded-3 m-2 p-3 pe-5">
+
                 <div key={animale.IdAnimale}>
                   <p>Nome: {animale.nome}</p>
                   <p>
@@ -121,20 +124,25 @@ const PageHomeComponent = () => {
         <hr />
       </Container>
       <div className="littleTitle">
+
         <Container>
           <h2 className="display-5">INFORMAZIONI DI CONTATTO</h2>
         </Container>
       </div>
       <Container>
         <div className="row g-5">
+
           <div className="col-4 border border-primary">
+
             <p>
               Direttore Sanitario Regionale Dott.Mario Rossi -<br />
               Clinica Veterinaria Benessere Animale P.IVA 12345678901
             </p>
           </div>
+
           <div className="col-4"></div>
           <div className="col-4 border border-danger">
+
             <p>Via Milano,15</p>
             <p>20122 Milano Mi</p>
             <p>Tel:02 9786 5487</p>

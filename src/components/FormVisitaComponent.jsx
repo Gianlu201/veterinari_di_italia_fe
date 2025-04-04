@@ -1,44 +1,82 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const FormVisitaComponent = () => {
   const [Farmaci, setFarmaci] = useState([]);
-  const [DataVisita, setDataVisita] = useState("");
-  const [EsameObbiettivo, setEsameObbiettivo] = useState("");
-  const [Descrizione, setDescrizione] = useState("");
+  const [DataVisita, setDataVisita] = useState('');
+  const [EsameObbiettivo, setEsameObbiettivo] = useState('');
+  const [Descrizione, setDescrizione] = useState('');
   const [Farmaco, setFarmaco] = useState([]);
+  const [IdAnagraficaAnimale, setIdAnagraficaAnimale] = useState('');
+
+  const navigate = useNavigate();
+
+  //   const CicloFarmaci = () => {
+  //     var farmaci = [];
+  //     Farmaco.forEach((element) => {
+  //       farmaci.push({
+  //         farmacoId: element,
+  //       });
+  //     });
+  //     return farmaci;
+  //   };
 
   const PostVisita = async () => {
     try {
+      //   var pincoPallino = CicloFarmaci();
+      console.log(Farmaco);
       const Visita = {
-        DataVisita: DataVisita,
-        EsameObbiettivo: EsameObbiettivo,
-        Descrizione: Descrizione,
-        Farmaco: [{ Farmaco }],
+        dataDellaVisita: `${DataVisita.concat(':00.000')}`,
+        esameObiettivo: EsameObbiettivo,
+        descrizione: Descrizione,
+        idAnagraficaAnimale: IdAnagraficaAnimale,
+        farmaco: Farmaco,
       };
-      const response = await fetch("https://localhost:7019/api/Visite", {
-        method: "POST",
+      console.log(Visita);
+      const response = await fetch('https://localhost:7019/api/Visite', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(Visita),
       });
+
       console.log(response);
     } catch {
       throw new Error();
     }
   };
 
+  const handelChanges = (e) => {
+    let listaFarmaci = [];
+    e.target.selectedOptions.forEach((nino) => {
+      listaFarmaci.push({ farmacoId: nino.value });
+    });
+    console.log(listaFarmaci);
+  };
+
   const GetFarmaci = async () => {
+    let tokenObj = localStorage.getItem('veterinari_token');
+
+    if (!tokenObj) {
+      navigate('/login');
+    }
+
+    let token = JSON.parse(tokenObj).token;
+
     const response = await fetch('https://localhost:7019/api/Farmaci', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     });
     if (response.ok) {
       const data = await response.json();
       console.log(data);
       setFarmaci(data);
+    } else {
+      navigate('/login');
     }
   };
 
@@ -53,14 +91,14 @@ const FormVisitaComponent = () => {
         PostVisita();
       }}
     >
-      <div className="mb-3">
-        <label htmlFor="DataVisita" className="form-label">
+      <div className='mb-3'>
+        <label htmlFor='DataVisita' className='form-label'>
           Data Visita
         </label>
         <input
-          type="datetime-local"
-          className="form-control"
-          id="dataVisita"
+          type='datetime-local'
+          className='form-control'
+          id='dataVisita'
           onChange={(e) => {
             setDataVisita(e.target.value);
           }}
@@ -71,10 +109,10 @@ const FormVisitaComponent = () => {
           Esame Obbiettivo
         </label>
         <input
-          type="text-area"
-          className="form-control"
-          id="esameObbiettivo"
-          placeholder="Inserisci qui un esame obbiettivo"
+          type='text-area'
+          className='form-control'
+          id='esameObbiettivo'
+          placeholder='Inserisci qui un esame obbiettivo'
           onChange={(e) => {
             setEsameObbiettivo(e.target.value);
           }}
@@ -93,18 +131,44 @@ const FormVisitaComponent = () => {
             setDescrizione(e.target.value);
           }}
         />
+        <div className='mb-3'>
+          <label htmlFor='IdAnagraficaAnimale' className='form-label'>
+            Id Anagrafica Animale
+          </label>
+          <input
+            type='text'
+            className='form-control'
+            id='IdAnagrafica'
+            placeholder="iserisci qui l'id univoco dell'animale visitato"
+            onChange={(e) => {
+              setIdAnagraficaAnimale(e.target.value);
+            }}
+          />
+        </div>
       </div>
       <div className='mb-3'>
         <label htmlFor='Farmaco' className='form-label'>
           Farmaco
         </label>
         <select
-          className="form-select"
-          id="farmaco"
+          className='form-select'
+          id='farmaco'
           multiple
           size={5}
           onChange={(e) => {
-            setFarmaco(e.target.value);
+            // const options = Array.from(
+            //   e.target.selectedOptions,
+            //   (option) => {farmacoId: option.value}
+            // );
+            handelChanges(e);
+            // var listaFarmaci = e.target.selectedOptions;
+            // let lista2 = [];
+            // console.log(e.target.selectedOptions);
+            // listaFarmaci.((nino) => {
+            //   lista2.push({ farmacoId: nino.value });
+            // });
+            // console.log();
+            // setFarmaco(listaFarmaci);
           }}
         >
           {Farmaci.length > 0 &&

@@ -63,32 +63,32 @@ const NavbarComponent = () => {
       collapseOnSelect
       expand='lg'
       className='bg-lg-primary'
-      //style={{ backgroundColor: "#56C7D7" }}
+      style={{ backgroundColor: '#56C7D7' }}
     >
       <Container>
-        <Link className='navbar-brand text-primary' to={'/'}>
+        <Link className='navbar-brand text-white fw-bold' to={'/'}>
           Benessere Animali
         </Link>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
             <Link className='nav-link' to={'/'}>
-              Patologie e Disturbi
+              HOMEPAGE
+            </Link>
+            <Link className='nav-link' to={'*'}>
+              PATOLOGIE E DISTURBI
             </Link>
             <Link className='nav-link' to={'/farmacia'}>
-              Farmacia
+              FARMACIA
             </Link>
             <Link className='nav-link' to={'/veterinario'}>
-              Trattamenti e Terapie
+              TRATTAMENTI E TERAPIE
             </Link>
             <Link className='nav-link' to={'/veterinario'}>
-              Lavora con noi
+              LAVORA CON NOI
             </Link>
             <Link className='nav-link' to={'/veterinario'}>
-              Eventi
-            </Link>
-            <Link className='nav-link' to={'/veterinario'}>
-              Contatti
+              CONTATTI
             </Link>
           </Nav>
           <Nav>
@@ -106,11 +106,14 @@ const NavbarComponent = () => {
               </div>
             ) : (
               <>
-                <Link to='signIn' className='nav-link'>
-                  Registrati
+                <Link
+                  to='signIn'
+                  className='nav-link bg-success text-white me-2'
+                >
+                  REGISTRATI
                 </Link>
-                <Link to='login' className='nav-link'>
-                  Accedi
+                <Link to='login' className='nav-link backgroundRed text-white'>
+                  ACCEDI
                 </Link>
               </>
             )}

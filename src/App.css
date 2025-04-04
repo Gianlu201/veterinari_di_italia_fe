@@ -10,3 +10,11 @@ body {
     background-image: url(/public/img/backGround_dog.jpg);
     background-size: cover;
 }
+
+.littleTitle {
+    background-color: #89D9E3;
+}
+
+#backGroundFooter {
+    background-color: #053A5C;
+}

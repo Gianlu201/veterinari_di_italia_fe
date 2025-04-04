@@ -120,20 +120,21 @@ const PageHomeComponent = () => {
         </form>
         <hr />
       </Container>
-      <div className="bg-white">
+      <div className="littleTitle">
         <Container>
           <h2 className="display-5">INFORMAZIONI DI CONTATTO</h2>
         </Container>
       </div>
       <Container>
         <div className="row g-5">
-          <div className="col-5 border border-primary">
+          <div className="col-4 border border-primary">
             <p>
               Direttore Sanitario Regionale Dott.Mario Rossi -<br />
               Clinica Veterinaria Benessere Animale P.IVA 12345678901
             </p>
           </div>
-          <div className="col-5 border border-danger">
+          <div className="col-4"></div>
+          <div className="col-4 border border-danger">
             <p>Via Milano,15</p>
             <p>20122 Milano Mi</p>
             <p>Tel:02 9786 5487</p>
@@ -141,7 +142,39 @@ const PageHomeComponent = () => {
           </div>
         </div>
         <div>
-          <div></div>
+          <h2 className="littleTitle">VISITE SPECIALISTICHE</h2>
+          <p>
+            Presso la nostra struttura è possibile effettuare visite
+            specialistiche per:
+          </p>
+          <ul>
+            <li>Medicina Interna</li>
+            <li>Endocrinologia</li>
+            <li>Oftalmologia</li>
+            <li>Cardiologia</li>
+            <li>Ortopedia</li>
+            <li>Oncologia e Chemioterapia</li>
+          </ul>
+        </div>
+        <div>
+          <h2 className="littleTitle">
+            CERTIFICAZIONE PER IL BENESSERE ANIMALE
+          </h2>
+          <h3>Certificata AVEC e BAYER</h3>
+          <p>
+            Pensando soprattutto i nostri amici gatti &#40;ma non solo&#41;
+            siamo<br></br> fieri di aver ottenuto l&#39;importante
+            CERTIFICAZIONE PER IL<br></br>
+            BENESSERE ANIMALE.
+          </p>
+          <p>
+            Questo rende la struttura un ambiente confortevole per tutti i{" "}
+            <br></br>
+            pazienti, liberandoli dallo stress della visita. Ci prendiamo cura
+            del <br></br> loro benessere fisico, psicologico e garantiamo
+            un&#39;adeguata <br></br>
+            terapia del dolore.
+          </p>
         </div>
       </Container>
     </>

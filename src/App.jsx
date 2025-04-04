@@ -8,6 +8,7 @@ import PageLoginComponent from "./components/PageLoginComponent";
 import PageSignInComponent from "./components/PageSignInComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FooterComponent from "./components/FooterComponent";
+import NotFoundComponent from "./components/NotFoundComponent";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/farmacia" element={<PageFarmaciaComponet />} />
             <Route path="/login" element={<PageLoginComponent />} />
             <Route path="/signIn" element={<PageSignInComponent />} />
+            <Route path="*" element={<NotFoundComponent />} />
           </Routes>
           <FooterComponent />
         </div>

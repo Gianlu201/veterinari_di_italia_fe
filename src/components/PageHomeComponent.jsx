@@ -39,26 +39,28 @@ const PageHomeComponent = () => {
   return (
     <>
       <Container>
-        <h1 className="text-center">Clinica Veterinaria Benessere Animali</h1>
-        <div className="d-flex justify-content-center ">
-          <Button
-            className="mx-1"
-            style={{ backgroundColor: "#89D9E3", border: "#89D9E3" }}
-          >
-            CONTATTI
-          </Button>
-          <Button
-            className="mx-1"
-            style={{ backgroundColor: "#89D9E3", border: "#89D9E3" }}
-          >
-            REPARTI
-          </Button>
-          <Button
-            className="mx-1"
-            style={{ backgroundColor: "#89D9E3", border: "#89D9E3" }}
-          >
-            MEDICI
-          </Button>
+        <div className="webImg mb-4" style={{ height: "22vw" }}>
+          <h1 className="text-center">Clinica Veterinaria Benessere Animali</h1>
+          <div className="d-flex justify-content-center ">
+            <Button
+              className="mx-1"
+              style={{ backgroundColor: "#89D9E3", border: "#89D9E3" }}
+            >
+              CONTATTI
+            </Button>
+            <Button
+              className="mx-1"
+              style={{ backgroundColor: "#89D9E3", border: "#89D9E3" }}
+            >
+              REPARTI
+            </Button>
+            <Button
+              className="mx-1"
+              style={{ backgroundColor: "#89D9E3", border: "#89D9E3" }}
+            >
+              MEDICI
+            </Button>
+          </div>
         </div>
 
         <form onSubmit={handleSearch}>
@@ -78,20 +80,25 @@ const PageHomeComponent = () => {
                 className="form-control"
               />
 
-              <button type="submit" className="btn btn-primary">
-                Submit
+              <button
+                type="submit"
+                class="btn btn-primary backgroundRed"
+                style={{ border: "#F04D31" }}
+              >
+                CERCA
               </button>
             </div>
           </div>
 
 
           {error ? (
-            <div className='d-inline-block border border-1 rounded-3 m-2 p-3 pe-5'>
-              <p className='m-0 p-0'>{error}</p>
+            <div className="d-inline-block border border-1 rounded-3 m-2 p-3 pe-5">
+              <p className="m-0 p-0">{error}</p>
             </div>
           ) : (
             animale.nome && (
-              <div className='d-inline-block border border-1 rounded-3 m-2 p-3 pe-5'>
+
+              <div className="d-inline-block border border-1 rounded-3 m-2 p-3 pe-5">
 
                 <div key={animale.IdAnimale}>
                   <p>Nome: {animale.nome}</p>
@@ -116,27 +123,67 @@ const PageHomeComponent = () => {
         </form>
         <hr />
       </Container>
-      <div className="bg-warning">
+      <div className="littleTitle">
+
         <Container>
           <h2 className="display-5">INFORMAZIONI DI CONTATTO</h2>
         </Container>
       </div>
       <Container>
         <div className="row g-5">
-          <div className="col-5 border border-primary">
+
+          <div className="col-4 border border-primary">
+
             <p>
               Direttore Sanitario Regionale Dott.Mario Rossi -<br />
               Clinica Veterinaria Benessere Animale P.IVA 12345678901
             </p>
           </div>
-          <div className="col-5 border border-danger">
+
+          <div className="col-4"></div>
+          <div className="col-4 border border-danger">
+
             <p>Via Milano,15</p>
             <p>20122 Milano Mi</p>
             <p>Tel:02 9786 5487</p>
             <p>info@benssereanimali.it</p>
           </div>
         </div>
-        <div></div>
+        <div>
+          <h2 className="littleTitle">VISITE SPECIALISTICHE</h2>
+          <p>
+            Presso la nostra struttura è possibile effettuare visite
+            specialistiche per:
+          </p>
+          <ul>
+            <li>Medicina Interna</li>
+            <li>Endocrinologia</li>
+            <li>Oftalmologia</li>
+            <li>Cardiologia</li>
+            <li>Ortopedia</li>
+            <li>Oncologia e Chemioterapia</li>
+          </ul>
+        </div>
+        <div>
+          <h2 className="littleTitle">
+            CERTIFICAZIONE PER IL BENESSERE ANIMALE
+          </h2>
+          <h3>Certificata AVEC e BAYER</h3>
+          <p>
+            Pensando soprattutto i nostri amici gatti &#40;ma non solo&#41;
+            siamo<br></br> fieri di aver ottenuto l&#39;importante
+            CERTIFICAZIONE PER IL<br></br>
+            BENESSERE ANIMALE.
+          </p>
+          <p>
+            Questo rende la struttura un ambiente confortevole per tutti i{" "}
+            <br></br>
+            pazienti, liberandoli dallo stress della visita. Ci prendiamo cura
+            del <br></br> loro benessere fisico, psicologico e garantiamo
+            un&#39;adeguata <br></br>
+            terapia del dolore.
+          </p>
+        </div>
       </Container>
     </>
   );

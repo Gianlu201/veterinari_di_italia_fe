@@ -2,26 +2,44 @@ import { useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import TableFarmaciListComponent from './TableFarmaciListComponent';
 import TableVenditeListComponent from './TableVenditeListComponent';
+import { useNavigate } from 'react-router-dom';
 
 const PageFarmaciaComponet = () => {
   const [farmaci, setFarmaci] = useState([]);
   const [vendite, setVendite] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const navigate = useNavigate();
 
   const getAllFarmaci = async () => {
+    let tokenObj = localStorage.getItem('veterinari_token');
+
+    if (!tokenObj) {
+      navigate('/login');
+    }
+
+    let token = JSON.parse(tokenObj).token;
+
     setVendite([]);
+    setErrorMessage('');
 
     try {
       const response = await fetch('https://localhost:7019/api/Farmaci', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       });
+
+      console.log(response);
 
       if (response.ok) {
         const data = await response.json();
 
         setFarmaci(data);
+      } else if (response.status === 403) {
+        setErrorMessage('Non sei autorizzato');
       } else {
         throw new Error();
       }
@@ -50,6 +68,17 @@ const PageFarmaciaComponet = () => {
   // };
 
   const getAllVendite = async () => {
+    let tokenObj = localStorage.getItem('veterinari_token');
+
+    if (!tokenObj) {
+      navigate('/login');
+    }
+
+    let token = JSON.parse(tokenObj).token;
+
+    setVendite([]);
+    setErrorMessage('');
+
     setFarmaci([]);
 
     try {
@@ -59,6 +88,7 @@ const PageFarmaciaComponet = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -67,6 +97,8 @@ const PageFarmaciaComponet = () => {
         const data = await response.json();
 
         setVendite(data.vendite);
+      } else if (response.status === 403) {
+        setErrorMessage('Non sei autorizzato');
       } else {
         throw new Error();
       }
@@ -111,6 +143,8 @@ const PageFarmaciaComponet = () => {
           </Button>
         </div>
       </div>
+
+      {errorMessage && <p>{errorMessage}</p>}
 
       {farmaci.length > 0 && (
         <div>

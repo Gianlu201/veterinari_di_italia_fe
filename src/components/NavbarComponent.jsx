@@ -56,40 +56,38 @@ const NavbarComponent = () => {
     if (tokenInfo) {
       login(tokenInfo);
     }
-
-    console.log(tokenInfo);
   }, []);
 
   return (
     <Navbar
       collapseOnSelect
-      expand="lg"
-      className="bg-lg-primary"
+      expand='lg'
+      className='bg-lg-primary'
       //style={{ backgroundColor: "#56C7D7" }}
     >
       <Container>
-        <Link className="navbar-brand text-primary" to={"/"}>
+        <Link className='navbar-brand text-primary' to={'/'}>
           Benessere Animali
         </Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Link className="nav-link" to={"/"}>
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+        <Navbar.Collapse id='responsive-navbar-nav'>
+          <Nav className='me-auto'>
+            <Link className='nav-link' to={'/'}>
               Patologie e Disturbi
             </Link>
-            <Link className="nav-link" to={"/farmacia"}>
+            <Link className='nav-link' to={'/farmacia'}>
               Farmacia
             </Link>
-            <Link className="nav-link" to={"/veterinario"}>
+            <Link className='nav-link' to={'/veterinario'}>
               Trattamenti e Terapie
             </Link>
-            <Link className="nav-link" to={"/veterinario"}>
+            <Link className='nav-link' to={'/veterinario'}>
               Lavora con noi
             </Link>
-            <Link className="nav-link" to={"/veterinario"}>
+            <Link className='nav-link' to={'/veterinario'}>
               Eventi
             </Link>
-            <Link className="nav-link" to={"/veterinario"}>
+            <Link className='nav-link' to={'/veterinario'}>
               Contatti
             </Link>
           </Nav>

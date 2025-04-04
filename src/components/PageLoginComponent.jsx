@@ -96,6 +96,7 @@ const PageLoginComponent = () => {
           <input
             className=' form-control'
             placeholder='Email'
+            value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -108,6 +109,7 @@ const PageLoginComponent = () => {
             type='password'
             className=' form-control'
             placeholder='Password'
+            value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}

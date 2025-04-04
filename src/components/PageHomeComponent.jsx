@@ -83,11 +83,14 @@ const PageHomeComponent = () => {
               </button>
             </div>
           </div>
-          <div className='d-inline-block border border-1 rounded-3 m-2 p-3 pe-5'>
-            {error ? (
+
+          {error ? (
+            <div className='d-inline-block border border-1 rounded-3 m-2 p-3 pe-5'>
               <p className='m-0 p-0'>{error}</p>
-            ) : (
-              animale.nome && (
+            </div>
+          ) : (
+            animale.nome && (
+              <div className='d-inline-block border border-1 rounded-3 m-2 p-3 pe-5'>
                 <div key={animale.IdAnimale}>
                   <p>Nome: {animale.nome}</p>
                   <p>
@@ -105,9 +108,9 @@ const PageHomeComponent = () => {
                   </p>
                   <p>Email: {animale.proprietarioAnimale.email}</p>
                 </div>
-              )
-            )}
-          </div>
+              </div>
+            )
+          )}
         </form>
         <hr />
       </Container>

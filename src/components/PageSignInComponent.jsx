@@ -58,6 +58,7 @@ const PageSignInComponent = () => {
           <input
             className=' form-control'
             placeholder='Nome'
+            value={nome}
             onChange={(e) => {
               setNome(e.target.value);
             }}
@@ -69,6 +70,7 @@ const PageSignInComponent = () => {
           <input
             className=' form-control'
             placeholder='Cognome'
+            value={cognome}
             onChange={(e) => {
               setCognome(e.target.value);
             }}
@@ -81,6 +83,7 @@ const PageSignInComponent = () => {
             maxLength={16}
             className=' form-control'
             placeholder='Codice fiscale'
+            value={codiceFiscale}
             onChange={(e) => {
               setCodiceFiscale(e.target.value);
             }}
@@ -93,6 +96,7 @@ const PageSignInComponent = () => {
             type='email'
             className=' form-control'
             placeholder='Email'
+            value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -105,6 +109,7 @@ const PageSignInComponent = () => {
             type='tel'
             className=' form-control'
             placeholder='Telefono'
+            value={telefono}
             onChange={(e) => {
               setTelefono(e.target.value);
             }}
@@ -117,6 +122,7 @@ const PageSignInComponent = () => {
             type='password'
             className=' form-control'
             placeholder='Password'
+            value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
